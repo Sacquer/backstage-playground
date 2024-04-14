@@ -1,0 +1,1 @@
+export { ManageMyWidgets } from './SimpleSearch';

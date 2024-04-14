@@ -10,6 +10,7 @@ import {
   SupportButton,
 } from '@backstage/core-components';
 import { ExampleFetchComponent } from '../ExampleFetchComponent';
+import { ManageMyWidgets } from '../simple-search';
 
 export const ExampleComponent = () => (
   <Page themeId="tool">
@@ -28,6 +29,9 @@ export const ExampleComponent = () => (
               All content should be wrapped in a card like this.
             </Typography>
           </InfoCard>
+        </Grid>
+        <Grid item>
+          <ManageMyWidgets />
         </Grid>
         <Grid item>
           <ExampleFetchComponent />
