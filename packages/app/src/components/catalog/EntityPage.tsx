@@ -58,6 +58,8 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
+import { ExampleReadEntities } from '@internal/backstage-plugin-my-plugin-software-catalog';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -354,6 +356,11 @@ const systemPage = (
         ]}
         unidirectional={false}
       />
+    </EntityLayout.Route>
+
+    {/* Adding a new tab to the system view */}
+    <EntityLayout.Route path='/your-custom-route' title='CustomTitle'>
+      <ExampleReadEntities />
     </EntityLayout.Route>
   </EntityLayout>
 );

@@ -32,11 +32,15 @@ import {
   OAuthRequestDialog,
   SignInPage,
 } from '@backstage/core-components';
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { createApp } from '@backstage/app-defaults';
 import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+import { MyPluginPage } from '@internal/backstage-plugin-my-plugin';
+import { MyPluginSoftwareCatalogPage } from '@internal/backstage-plugin-my-plugin-software-catalog';
+import { FaqSnippetsPage } from '@internal/backstage-plugin-faq-snippets';
 
 const app = createApp({
   apis,
@@ -58,7 +62,18 @@ const app = createApp({
     });
   },
   components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+    SignInPage: props => (
+      <SignInPage
+        {...props}
+        auto
+        providers={[{
+          id: 'github-auth-provider',
+          title: 'GitHub',
+          message: 'Sign in using GitHub',
+          apiRef: githubAuthApiRef,
+        }, 'guest']}
+      />
+    ),
   },
 });
 
@@ -100,6 +115,9 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/my-plugin" element={<MyPluginPage />} />
+    <Route path="/my-plugin-software-catalog" element={<MyPluginSoftwareCatalogPage />} />
+    <Route path="/faq-snippets" element={<FaqSnippetsPage />} />
   </FlatRoutes>
 );
 
