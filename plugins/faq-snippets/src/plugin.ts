@@ -3,13 +3,16 @@ import {
   createRoutableExtension,
 } from '@backstage/core-plugin-api';
 
-import { rootRouteRef } from './routes';
+import { catalogIndexPageRef, rootRouteRef } from './routes';
 
 export const faqSnippetsPlugin = createPlugin({
   id: 'faq-snippets',
   routes: {
     root: rootRouteRef,
   },
+  externalRoutes: {
+    catalogIndex: catalogIndexPageRef,
+  }
 });
 
 export const FaqSnippetsPage = faqSnippetsPlugin.provide(

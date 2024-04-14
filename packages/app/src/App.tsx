@@ -40,7 +40,7 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { MyPluginPage } from '@internal/backstage-plugin-my-plugin';
 import { MyPluginSoftwareCatalogPage } from '@internal/backstage-plugin-my-plugin-software-catalog';
-import { FaqSnippetsPage } from '@internal/backstage-plugin-faq-snippets';
+import { FaqSnippetsPage, faqSnippetsPlugin } from '@internal/backstage-plugin-faq-snippets';
 
 const app = createApp({
   apis,
@@ -58,6 +58,9 @@ const app = createApp({
       viewTechDoc: techdocsPlugin.routes.docRoot,
     });
     bind(orgPlugin.externalRoutes, {
+      catalogIndex: catalogPlugin.routes.catalogIndex,
+    });
+    bind(faqSnippetsPlugin.externalRoutes, {
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
   },

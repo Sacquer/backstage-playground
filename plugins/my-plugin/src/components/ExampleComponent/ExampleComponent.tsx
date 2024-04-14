@@ -8,11 +8,18 @@ import {
   ContentHeader,
   HeaderLabel,
   SupportButton,
+  Link,
 } from '@backstage/core-components';
-import { ExampleFetchComponent } from '../ExampleFetchComponent';
+import { useRouteRef } from '@backstage/core-plugin-api';
 
-export const ExampleComponent = () => (
-  <Page themeId="tool">
+import { ExampleFetchComponent } from '../ExampleFetchComponent';
+import { myPluginPlugin } from '../../plugin';
+
+export const ExampleComponent = () => {
+  const { details: detailsRouteRef } = myPluginPlugin.routes;
+  const detailsRef = useRouteRef(detailsRouteRef)
+
+  return (<Page themeId="tool">
     <Header title="Welcome to my-plugin!" subtitle="Optional subtitle">
       <HeaderLabel label="Owner" value="Team X" />
       <HeaderLabel label="Lifecycle" value="Alpha" />
@@ -26,6 +33,7 @@ export const ExampleComponent = () => (
           <InfoCard title="Information card">
             <Typography variant="body1">
               All content should be wrapped in a card like this.
+              <Link to={detailsRef()}>Details</Link>
             </Typography>
           </InfoCard>
         </Grid>
@@ -34,5 +42,5 @@ export const ExampleComponent = () => (
         </Grid>
       </Grid>
     </Content>
-  </Page>
-);
+  </Page>)
+};
