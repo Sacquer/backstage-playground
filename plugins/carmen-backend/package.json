@@ -27,6 +27,7 @@
     "@backstage/backend-defaults": "^0.2.16",
     "@backstage/backend-plugin-api": "^0.6.16",
     "@backstage/config": "^1.2.0",
+    "@backstage/plugin-auth-node": "^0.4.11",
     "@types/express": "*",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",

@@ -17,10 +17,11 @@ export const carmenPlugin = createBackendPlugin({
         httpRouter: coreServices.httpRouter,
         identity: coreServices.identity,
         database: coreServices.database,
+        permissions: coreServices.permissions,
         logger: coreServices.logger,
       },
-      async init({ httpRouter, identity, database, logger }) {
-        httpRouter.use(await createRouter({ identity, database, logger }));
+      async init({ httpRouter, permissions, identity, database, logger }) {
+        httpRouter.use(await createRouter({ identity, permissions, database, logger }));
         httpRouter.addAuthPolicy({
           path: '/health',
           allow: 'unauthenticated',
