@@ -40,4 +40,6 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
+backend.add(import('@internal/backstage-plugin-carmen-backend'));
+
 backend.start();
