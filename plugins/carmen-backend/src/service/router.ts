@@ -27,9 +27,6 @@ export async function createRouter(
     logger.info('PONG!');
 
     const token = getBearerTokenFromAuthorizationHeader(req.headers.authorization);
-    console.info('-------------------------------------\n');
-    console.info({ token });
-    console.info('-------------------------------------\n');
 
     response.json({ status: 'ok' });
   });

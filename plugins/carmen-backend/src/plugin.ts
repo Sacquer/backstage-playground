@@ -10,7 +10,7 @@ import { createRouter } from './service/router';
  * @public
  */
 export const carmenPlugin = createBackendPlugin({
-  pluginId: 'carmenPlugin',
+  pluginId: 'carmen', // curl 127.0.0.1:7007/api/carmen/health
   register(env) {
     env.registerInit({
       deps: {
